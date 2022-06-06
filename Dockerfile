@@ -14,6 +14,7 @@ EXPOSE 8080
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page279/jack-and-rose.zip .
 RUN yum install unzip -y
 RUN unzip jack-and-rose.zip
-RUN mv free-wedding-website-template/* /opt/tomcat/webapps/
-RUN rm -rf free-wedding-website-template
+RUN mv free-wedding-website-template/ weeding
+RUN mv weeding /opt/tomcat/webapps/
+RUN rm -rf weeding
 CMD ["/opt/tomcat/bin/catalina.sh","run"]
