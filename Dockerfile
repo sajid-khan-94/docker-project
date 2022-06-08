@@ -11,7 +11,7 @@ RUN tar -xvzf apache-tomcat-9.0.62.tar.gz
 RUN mv apache-tomcat-9.0.62/* /opt/tomcat/
 #COPY ./*.war /opt/tomcat/webapps/
 EXPOSE 8080
-ADD https://www.free-css.com/assets/files/free-css-templates/download/page279/klean.zip
+ADD https://www.free-css.com/assets/files/free-css-templates/download/page279/klean.zip .
 RUN yum install unzip -y
 RUN unzip klean.zip
 RUN mv cleaning-services-website-template clean
