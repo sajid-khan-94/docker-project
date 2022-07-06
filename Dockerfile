@@ -10,7 +10,8 @@ ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.64/bin/apache-tomcat-9.0.64.ta
 RUN tar -xvzf apache-tomcat-9.0.64.tar.gz
 RUN mv apache-tomcat-9.0.64/* /opt/tomcat/
 #COPY ./*.war /opt/tomcat/webapps/
-EXPOSE 8080
+RUN sed -i 's/8080/8088/g' /opt/tomcat/conf/server.xml
+EXPOSE 8088
 RUN echo '<tomcat-users xmlns="http://tomcat.apache.org/xml"' > /opt/tomcat/conf/tomcat-users.xml
 RUN echo '              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"' >> /opt/tomcat/conf/tomcat-users.xml
 RUN echo '              xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"' >> /opt/tomcat/conf/tomcat-users.xml
@@ -38,6 +39,6 @@ RUN echo '</Context>' | tee -a /opt/tomcat/webapps/host-manager/META-INF/context
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page279/jack-and-rose.zip .
 RUN yum install unzip -y
 RUN unzip jack-and-rose.zip
-RUN mv free-wedding-website-template/* /opt/tomcat/webapps/
+RUN mv free-wedding-website-template/ /opt/tomcat/webapps/wedd
 RUN rm -rf free-wedding-website-template
 CMD ["/opt/tomcat/bin/catalina.sh","run"]
